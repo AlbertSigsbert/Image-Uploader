@@ -51,7 +51,7 @@
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx) was to build an application to complete the following tasks.
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge.<br> The [challenge](https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx) was to build an application to complete the following tasks.
 - User can drag and drop an image to upload it
 - User can choose to select an image from his/her folder
 - User can see a loader when uploading
