@@ -4,7 +4,7 @@ function Layout(props) {
   return (
     <>
       <Head>
-        <title>Image Linker</title>
+        <title>Image Uploader</title>
         <meta
           name="description"
           content="Upload your images and get your images url"
