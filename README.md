@@ -39,17 +39,11 @@
 
 ![screenshot](https://github.com/AlbertSigsbert/Image-Uploader/blob/main/public/screenshot.png?raw=true)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
+- [NextJS](https://nextjs.org/)
 - [React](https://reactjs.org/)
 - [Tailwind](https://tailwindcss.com/)
 
@@ -57,7 +51,12 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx) was to build an application to complete the given user stories.
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx) was to build an application to complete the following tasks.
+- User can drag and drop an image to upload it
+- User can choose to select an image from his/her folder
+- User can see a loader when uploading
+- When the image is uploaded, a user can see the image and copy it
+- User can choose to copy to the clipboard
 
 ## How To Use
 
