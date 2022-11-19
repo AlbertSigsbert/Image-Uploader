@@ -1,9 +1,5 @@
-import Loading from "../components/Loading";
-import Success from "../components/Success";
-import UploadForm from "../components/UploadForm";
+import Home from "../components/Home";
 
-export default function Home() {
-  // return <UploadForm />;
-  // return <Loading/>;
-  return <Success/>;
+export default function HomePage() {
+  return <Home />;
 }

@@ -1,16 +1,11 @@
 import Image from "next/image";
-import { useContext, useRef } from "react";
-import { UploadContext } from "../context/UploadContext";
+import { useRef, useState } from "react";
 import SampleImg from "../public/image.svg";
 
-function UploadForm(props) {
-  const { file, setFile, error, setError } = useContext(UploadContext);
-
+function MultipleFiles(props) {
+  const [files, setFiles] = useState(null);
+  const [error, setError] = useState(null);
   const inputRef = useRef();
-
-  const handleDragEnter = (e) => {
-    e.preventDefault();
-  };
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -18,31 +13,34 @@ function UploadForm(props) {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    
-    let selectedFile = e.dataTransfer.files[0];
-    if (selectedFile) {
-    
-      imgValidator(selectedFile);
+    let selectedFiles = Array.from(e.dataTransfer.files);
+    if (selectedFiles) {
+      imgValidator(selectedFiles);
     }
   };
 
   const handleChange = (e) => {
-    let selectedFile = e.target.files[0];
+    let selectedFiles = Array.from(e.target.files);
 
-    if (selectedFile) {
-      imgValidator(selectedFile);
+    if (selectedFiles) {
+      imgValidator(selectedFiles);
     }
   };
 
-  const imgValidator = (file) => {
+  const imgValidator = (files) => {
+    let types = [];
+    files.forEach((file) => {
+      types.push(file.type);
+    });
+
     const str = "image";
-    const isImage = file.type.includes(str);
+    const isImage = types.every((item) => item.includes(str));
 
     if (isImage) {
-      setFile(file);
+      setFiles(files);
       setError(null);
     } else {
-      setFile(null);
+      setFiles(null);
       setError("Only image files are accepted.");
     }
   };
@@ -57,9 +55,8 @@ function UploadForm(props) {
           File should be Jpeg, Png,...
         </p>
 
-        
+        {!files && (
           <div
-            onDragEnter={handleDragEnter}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             className="relative border border-dashed border-[#97BEF4] bg-[#F6F8FB] max-w-96 h-[219px]"
@@ -75,8 +72,7 @@ function UploadForm(props) {
               Drag & Drop your image here
             </p>
           </div>
-        
-
+        )}
         <p className="font-poppins text-xs text-center text-[#BDBDBD] my-4">
           Or
         </p>
@@ -89,6 +85,7 @@ function UploadForm(props) {
           <input
             type="file"
             accept="image/*"
+            multiple
             onChange={handleChange}
             hidden
             ref={inputRef}
@@ -114,4 +111,4 @@ function UploadForm(props) {
   );
 }
 
-export default UploadForm;
+export default MultipleFiles;
