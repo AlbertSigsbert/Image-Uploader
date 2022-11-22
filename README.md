@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://image-uploader-delta.vercel.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/iIuCqlLkVtq9lg6XHEnI">
       Solution
     </a>
     <span> | </span>
@@ -83,8 +83,10 @@ $ npm run dev
 ## Acknowledgements
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example -->
-
-
+  #### Articles or add-ons/plugins that helped me to complete the project
+  
+ - [Firebase Storage](https://firebase.google.com/docs/storage)
+ - [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
 
 ## Contact
 
