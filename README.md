@@ -36,6 +36,11 @@
 <!-- OVERVIEW -->
 
 ## Overview
+I had a great experience and fun building this project.
+
+I first started styling components based on Figma designs using tailwindcss, then after that, I implemented image upload functionality using NextJS.
+
+For Image uploading I utilized firebase storage SDK, to manage the global state I used the Context API and finally  for the copy-to-clipboard functionality I used the browser's built-in Clipboard API
 
 ![screenshot](https://github.com/AlbertSigsbert/Image-Uploader/blob/main/public/screenshot.png?raw=true)
 
