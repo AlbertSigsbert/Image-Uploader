@@ -4,7 +4,7 @@ import { UploadContext } from "../context/UploadContext";
 import SampleImg from "../public/image.svg";
 
 function UploadForm(props) {
-  const { file, setFile, error, setError } = useContext(UploadContext);
+  const { setFile, error, setError } = useContext(UploadContext);
 
   const inputRef = useRef();
 
@@ -18,10 +18,9 @@ function UploadForm(props) {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    
+
     let selectedFile = e.dataTransfer.files[0];
     if (selectedFile) {
-    
       imgValidator(selectedFile);
     }
   };
@@ -57,25 +56,24 @@ function UploadForm(props) {
           File should be Jpeg, Png,...
         </p>
 
-        
-          <div
-            onDragEnter={handleDragEnter}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            className="relative border border-dashed border-[#97BEF4] bg-[#F6F8FB] max-w-96 h-[219px]"
-          >
-            <Image
-              src={SampleImg}
-              alt="sampleImage"
-              priority
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
+        <div
+          onDragEnter={handleDragEnter}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          style={error ? { borderColor: "red" } : { borderColor: "#97BEF4" }}
+          className="relative border border-dashed bg-[#F6F8FB] max-w-96 h-[219px]"
+        >
+          <Image
+            src={SampleImg}
+            alt="sampleImage"
+            priority
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
 
-            <p className="mt-16 font-poppins text-[10px] md:text-[12px] leading-[18px] tracking-[-0.035em] text-[#BDBDBD] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              Drag & Drop your image here
-            </p>
-          </div>
-        
+          <p className="mt-16 font-poppins text-[10px] md:text-[12px] leading-[18px] tracking-[-0.035em] text-[#BDBDBD] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            Drag & Drop your image here
+          </p>
+        </div>
 
         <p className="font-poppins text-xs text-center text-[#BDBDBD] my-4">
           Or

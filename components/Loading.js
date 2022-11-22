@@ -2,13 +2,14 @@ import { useContext, useEffect } from "react";
 import { UploadContext } from "../context/UploadContext";
 
 function Loading(props) {
-  const { progress, url, setSuccess } = useContext(UploadContext);
+  const { progress, url, setFile, setSuccess } = useContext(UploadContext);
 
   useEffect(() => {
      if(url){
         setSuccess(true);
+        setFile(null);
      }
-  }, [url, setSuccess]);
+  }, [url, setSuccess,setFile]);
 
   return (
     <section className="grid place-items-center min-h-[80vh]">

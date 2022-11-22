@@ -9,6 +9,7 @@ import Success from "./Success";
 
 function Home(props) {
   const [file, setFile] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
   const { progress, url } = useUpload(file);
@@ -26,9 +27,10 @@ function Home(props) {
         setSuccess,
       }}
     >
-      {!progress && !success && <UploadForm />}
-      { progress && !success && <Loading />}
+      { !progress && <UploadForm /> }
+      { progress && !success  && <Loading />}
       { success && <Success />}
+    
     </UploadContext.Provider>
   );
 }
