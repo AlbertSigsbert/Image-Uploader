@@ -1,15 +1,18 @@
-import { useContext, useEffect } from "react";
-import { UploadContext } from "../context/UploadContext";
+import {useEffect } from "react";
+import { useUploadContext } from "../hooks/useUploadContext";
 
 function Loading(props) {
-  const { progress, url, setFile, setSuccess } = useContext(UploadContext);
+  const { progress, url, dispatch } = useUploadContext()
 
   useEffect(() => {
      if(url){
-        setSuccess(true);
-        setFile(null);
+      dispatch({ type: "SET_PROGRESS", payload: 0 });
      }
-  }, [url, setSuccess,setFile]);
+  }, [url, dispatch]);
+
+  if (progress <= 0) {
+    return;
+  }
 
   return (
     <section className="grid place-items-center min-h-[80vh]">

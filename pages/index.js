@@ -1,5 +1,9 @@
 import Home from "../components/Home";
-
+import { UploadContextProvider } from "../context/UploadContext";
 export default function HomePage() {
-  return <Home />;
+  return <>
+    <UploadContextProvider>
+      <Home/>
+    </UploadContextProvider>
+  </>
 }

@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { useContext, useRef, useState } from "react";
-import { UploadContext } from "../context/UploadContext";
+import Link from "next/link";
+import { useRef, useState } from "react";
+import { useUploadContext } from "../hooks/useUploadContext";
 
 function Success(props) {
   const [isCopied, setIsCopied] = useState(false);
-  const { url } = useContext(UploadContext);
+  const { url, dispatch } = useUploadContext();
 
   const urlInput = useRef();
 
@@ -75,6 +76,10 @@ function Success(props) {
             {isCopied ? "Copied!" : "Copy Link"}
           </button>
         </div>
+      </div>
+
+      <div className="my-4">
+        <Link href="/" onClick={() => dispatch({type:"RESET"})} className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Home</Link>
       </div>
     </section>
   );

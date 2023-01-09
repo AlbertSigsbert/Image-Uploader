@@ -1,10 +1,14 @@
+import { useState, useRef } from "react";
 import Image from "next/image";
-import { useContext, useRef } from "react";
-import { UploadContext } from "../context/UploadContext";
 import SampleImg from "../public/image.svg";
+import useStorage from "../hooks/useStorage";
+import { useUploadContext } from "../hooks/useUploadContext";
 
 function UploadForm(props) {
-  const { setFile, error, setError } = useContext(UploadContext);
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState(null);
+  const { upload } = useStorage();
+  const {isPending} = useUploadContext();
 
   const inputRef = useRef();
 
@@ -19,31 +23,36 @@ function UploadForm(props) {
   const handleDrop = (e) => {
     e.preventDefault();
 
-    let selectedFile = e.dataTransfer.files[0];
-    if (selectedFile) {
-      imgValidator(selectedFile);
+    let selected = e.dataTransfer.files[0];
+    if (selected && selected.type.includes("image")) {
+      setFile(selected);
+      setError(null);
+    } else {
+      setFile(null);
+      setError("Select an image file");
     }
   };
 
   const handleChange = (e) => {
-    let selectedFile = e.target.files[0];
+    e.preventDefault();
 
-    if (selectedFile) {
-      imgValidator(selectedFile);
-    }
-  };
+    let selected = e.target.files[0];
 
-  const imgValidator = (file) => {
-    const str = "image";
-    const isImage = file.type.includes(str);
-
-    if (isImage) {
-      setFile(file);
+    if (selected && selected.type.includes("image")) {
+      setFile(selected);
       setError(null);
     } else {
       setFile(null);
-      setError("Only image files are accepted.");
+      setError("Select an image file");
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    upload(file);
+
+    setFile(null);
   };
 
   return (
@@ -56,47 +65,71 @@ function UploadForm(props) {
           File should be Jpeg, Png,...
         </p>
 
-        <div
-          onDragEnter={handleDragEnter}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          style={error ? { borderColor: "red" } : { borderColor: "#97BEF4" }}
-          className="relative border border-dashed bg-[#F6F8FB] max-w-96 h-[219px]"
-        >
-          <Image
-            src={SampleImg}
-            alt="sampleImage"
-            priority
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
+        <form onSubmit={handleSubmit}>
+          {!file && (
+            <div
+              onDragEnter={handleDragEnter}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              style={
+                error ? { borderColor: "red" } : { borderColor: "#97BEF4" }
+              }
+              className="relative border border-dashed bg-[#F6F8FB] max-w-96 h-[219px]"
+            >
+              <Image
+                src={SampleImg}
+                alt="sampleImage"
+                priority
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              />
 
-          <p className="mt-16 font-poppins text-[10px] md:text-[12px] leading-[18px] tracking-[-0.035em] text-[#BDBDBD] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            Drag & Drop your image here
-          </p>
-        </div>
+              <p className="mt-16 font-poppins text-[10px] md:text-[12px] leading-[18px] tracking-[-0.035em] text-[#BDBDBD] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                Drag & Drop your image here
+              </p>
+            </div>
+          )}
+          {file && (
+            <div
+              className="p-4 my-16 w-full text-center font-montserrat text-green-700 bg-green-100 rounded-lg"
+              role="alert"
+            >
+              <span className="font-medium text-center">Success! </span>
+              <p>Image uploaded successfully</p>
+              <p>Tap submit to proceed</p>
+            </div>
+          )}
 
-        <p className="font-poppins text-xs text-center text-[#BDBDBD] my-4">
-          Or
-        </p>
+          {!file && (
+            <p className="font-poppins text-xs text-center text-[#BDBDBD] my-4">
+              Or
+            </p>
+          )}
 
-        <form
-          className="flex justify-center space-y-6"
-          action="#"
-          encType="multipart/form-data"
-        >
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleChange}
-            hidden
-            ref={inputRef}
-          />
-          <button
-            onClick={() => inputRef.current.click()}
-            className="font-noto font-medium text-[12px] text-white bg-[#2F80ED] rounded-lg p-2.5"
-          >
-            Choose a file
-          </button>
+          <div className="flex justify-center space-y-6">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleChange}
+              hidden
+              ref={inputRef}
+            />
+            <div className="flex space-x-4">
+              <button
+                type="button"
+                onClick={() => inputRef.current.click()}
+                className="font-noto font-medium text-[12px] text-white bg-[#2F80ED] rounded-lg p-2.5"
+              >
+                Choose a file
+              </button>
+              <button
+                type="submit"
+                disabled={isPending}
+                className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
         </form>
       </div>
       {error && (
