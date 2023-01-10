@@ -65,7 +65,7 @@ $ git clone https://github.com/AlbertSigsbert/Image-Uploader.git
 # Install dependencies
 $ npm install
 
-# Register firebase storage & Auth Web SDK
+# Register for firebase storage & Auth Web SDK
 
 # Create a local .env file and add your credentials with keys as found in firebase/config.js
 
