@@ -14,7 +14,7 @@ const useStorage = () => {
     
     try {
     
-      const storageRef = ref(storage, file.name);
+      const storageRef = ref(storage, `images/${file.name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
 
