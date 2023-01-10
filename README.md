@@ -29,6 +29,8 @@
 - Image Uploader is a website that allows users to signin and upload images and get their links
 - Built with NextJS on the frontend, Firebase as backend and TailwindCSS for styling
 - This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge.
+
+<br/>
 ![screenshot](https://github.com/AlbertSigsbert/Image-Uploader/blob/main/public/screenshot.png?raw=true)
 
 
