@@ -22,16 +22,6 @@
   </h3>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-
-## Table of Contents
-
-- [Overview](#overview)
-  - [Built With](#built-with)
-- [Features](#features)
-- [How to use](#how-to-use)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 
 <!-- OVERVIEW -->
 
@@ -62,7 +52,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - User can see a loader when uploading
 - When the image is uploaded, a user can see the image and copy it
 - User can choose to copy to the clipboard
-
+- [Optional] User Authentication
 ## How To Use
 
 <!-- Example: -->
