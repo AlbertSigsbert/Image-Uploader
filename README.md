@@ -26,12 +26,9 @@
 <!-- OVERVIEW -->
 
 ## Overview
-I had a great experience and fun building this project.
-
-I first started styling components based on Figma designs using tailwindcss, then after that, I implemented image upload functionality using NextJS.
-
-For Image uploading I utilized firebase storage SDK, to manage the global state I used the Context API and finally  for the copy-to-clipboard functionality I used the browser's built-in Clipboard API
-
+- Image Uploader is a website that allows users to signin and upload images and get their links
+- Built with NextJS on the frontend, Firebase as backend and TailwindCSS for styling
+- This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge.
 ![screenshot](https://github.com/AlbertSigsbert/Image-Uploader/blob/main/public/screenshot.png?raw=true)
 
 
@@ -74,7 +71,7 @@ $ npm run dev
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example -->
   #### Articles or add-ons/plugins that helped me to complete the project
-  
+ - [Firebase Auth](https://firebase.google.com/docs/auth)
  - [Firebase Storage](https://firebase.google.com/docs/storage)
  - [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
 
