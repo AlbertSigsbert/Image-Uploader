@@ -81,7 +81,7 @@ $ npm run dev
  - [Firebase Storage](https://firebase.google.com/docs/storage)
  - [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
 
-## Contact
+## Contact Me
 
 - [Portfolio website](https://albertsigsbert.netlify.app/)
 - [Github](https://github.com/AlbertSigsbert)
